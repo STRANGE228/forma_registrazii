@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<h1 align="center" xmlns:border="http://www.w3.org/1999/xhtml">Works Log</h1>
+{% for item in jobs %}
+<div class="container-fluid">
+    <h2>Action #{{ item.id }}</h2>
+    <table width = "100%" border="1" >
+	<tr style="background-color:#dddddd">
+		<td>Title of activity</td>
+        <td>Team leader</td>
+        <td>Duration</td>
+        <td>List of collaborators</td>
+        <td>is finished</td>
+	</tr>
+        <tr style="background-color:#eeeeff">
+		<td>{{ item.job }}</td>
+        <td>{{ users[item.team_leader] }}</td>
+        <td>{{ item.work_size }}</td>
+        <td>{{ item.collaborators }}</td>
+            {% if item.is_finished == 0 %}
+                <td style="background-color:#ffeeff">is not finished</td>
+            {% else %}
+                <td>is finished</td>
+            {% endif %}
+	</tr>
+</table>
+</div>
+{% endfor %}
+
+{% endblock %}
